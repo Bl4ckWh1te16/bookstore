@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Отчёт по продажам</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Книга</th>
+      <th>Покупатель</th>
+      <th>Количество</th>
+      <th>Сумма</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sale in sales %}
+    <tr>
+      <td>{{ sale.sale_date }}</td>
+      <td>{{ sale.book }}</td>
+      <td>{{ sale.customer }}</td>
+      <td>{{ sale.quantity }}</td>
+      <td>{{ sale.total_price }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p><strong>Общая выручка:</strong> {{ total }}₽</p>
+{% endblock %}

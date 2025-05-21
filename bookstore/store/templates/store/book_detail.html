@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>{{ book.title }}</h1>
+<p>Автор: {{ book.author }}</p>
+<p>Категория: {{ book.category }}</p>
+<p>Цена: {{ book.price }}₽</p>
+<p>Остаток: {{ book.stock }}</p>
+<p>{{ book.description }}</p>
+<a href="/" class="btn btn-secondary mt-3">Назад</a>
+{% endblock %}

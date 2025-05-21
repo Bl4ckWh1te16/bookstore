@@ -1,0 +1,15 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Каталог книг</h1>
+<form method="get" class="mb-3">
+    <input type="text" name="q" placeholder="Поиск по названию" value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-secondary">Поиск</button>
+</form>
+<ul class="list-group">
+  {% for book in books %}
+    <li class="list-group-item">
+      <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a> — {{ book.price }}₽
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
