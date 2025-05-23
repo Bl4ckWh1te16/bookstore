@@ -1,5 +1,4 @@
-{% extends 'store/base.html' %}
-{% block content %}
+{% extends 'store/base.html' %} {% block content %}
 <h2>Отчёт по продажам</h2>
 <table class="table">
   <thead>
@@ -9,6 +8,8 @@
       <th>Покупатель</th>
       <th>Количество</th>
       <th>Сумма</th>
+      <th>Чек</th>
+      <!-- Добавляем новый столбец для кнопки -->
     </tr>
   </thead>
   <tbody>
@@ -18,10 +19,21 @@
       <td>{{ sale.book }}</td>
       <td>{{ sale.customer }}</td>
       <td>{{ sale.quantity }}</td>
-      <td>{{ sale.total_price }}</td>
+      <td>{{ sale.total_price }}₽</td>
+      <td>
+        <a
+          href="{% url 'generate_pdf_single' sale.id %}"
+          class="btn btn-sm btn-info"
+        >
+          Скачать чек
+        </a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 <p><strong>Общая выручка:</strong> {{ total }}₽</p>
+<a href="{% url 'generate_pdf' %}" class="btn btn-primary"
+  >Сгенерировать полный отчёт PDF</a
+>
 {% endblock %}
